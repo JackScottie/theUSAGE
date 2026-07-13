@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "start": "node local_server.js --port 8060"
+  }
+}
