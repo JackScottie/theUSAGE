@@ -12,3 +12,7 @@ Project Foundry tracks this project as a living workspace with repo state, memor
 - The repo tells a new human or AI agent what matters.
 - Tasks are safe to delegate because context and approval gates are explicit.
 - Project status can be summarized without archaeology.
+
+## Git Workflow
+- Commit branch: `master`
+- All AI check-ins commit and push to this branch unless a human says otherwise.
