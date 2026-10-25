@@ -1,5 +1,16 @@
 {
+  "name": "theusage-maps",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A constrained invention game and usage-map workbench.",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "start": "node local_server.js --port 8060"
+    "start": "node --env-file-if-exists=.env local_server.js",
+    "dev": "node --env-file-if-exists=.env --watch local_server.js",
+    "test": "node --test",
+    "legacy": "node legacy/local_server.cjs --port 8061"
   }
 }

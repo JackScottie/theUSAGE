@@ -1,27 +1,23 @@
-# theUSAGE
+# theUSAGE / Usage Maps
 
 ## Goal
-theUSAGE is the oldest repository in the portfolio — a 2013 Python 2 App Engine `webapp2` search app over a saved Wikipedia Book Creator corpus. The corpus files, the templates, and the datastore export are all missing; a small Node server recreates the visible search page.
-
-The goal is recovery. Without `static/toolbook2.txt` through `toolbook18.txt`, this is a shell.
+Build a constrained invention game and usage-map workbench that connects object capabilities into solutions for complex goals. The user explicitly requested the modern branch on 2026-10-24.
 
 ## Lifecycle
-**Preserved** — Kept alive and runnable on purpose. No development is expected; revival is available but should be a deliberate decision, not drift.
+Active modernization on `usage-maps`. The historical Python 2 source and faithful replica remain preserved. Corpus recovery is an independent archival task, not a prerequisite for the new product.
 
-## Next Horizon
-- Search old backups for the toolbook corpus, templates, and datastore export.
-- If the corpus is unrecoverable, say so here and close the question permanently.
+## Current shape
+- Dependency-free Node 22.15+ local server on http://127.0.0.1:8060.
+- Buildless responsive HTML/CSS/ES modules in `public/`.
+- Six authored challenges, fourteen objects, manual authoring, three play modes, observations and scoring, revisions, local notebook, JSON/Markdown export, JSON import.
+- Optional OpenAI Responses structured-output solver in `lib/solver.js`, configured through ignored `.env` variables. No default model, no client-side key storage, no pretend offline generation.
+- Source of truth: this repository; project memory: `.ai-project/`.
 
-## Current Shape
-- Source of truth: this repository
-- Project memory: `.ai-project/`
-- Foundry room state: `ProjectFoundry/.foundry/projects.json`
+## Success criteria
+- Every proposed solution accounts for its declared objects and step prerequisites.
+- Users can inspect, change, test, and preserve maps.
+- A failed or insufficient-resource response is useful evidence.
+- Reported observations never become claims of independently verified physics.
 
-## Success Criteria
-- The repo tells a new human or AI agent what this project is *for*, not just how it is tracked.
-- Tasks are safe to delegate because context and approval gates are explicit.
-- Each model generation can move this project forward by one real increment.
-
-## Git Workflow
-- Commit branch: `master`
-- All AI check-ins commit and push to this branch unless a human says otherwise.
+## Workflow
+Continue on `usage-maps` for this modernization. Do not merge into `master` without user direction. Run `npm test` after changes to the engine, solver, persistence, or server. Keep `main.py` and `legacy/local_server.cjs` as historical artifacts. Start with `npm start` or the existing CMD launcher; preserve Foundry port 8060 and `PORT` support.
