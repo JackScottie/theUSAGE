@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Room Lab | The Usage</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/room.css">
+  <script type="module" src="/room.js"></script>
+</head>
+<body>
+  <header><a href="/">THE USAGE</a><span>Room Lab</span><a class="workbench" href="/">Usage Maps</a></header>
+  <main>
+    <div class="heading">
+      <div><p class="label">HOUSEHOLD INVENTION SIMULATOR</p><h1>Make do.</h1><p>One room, six objects, and just enough moves.</p></div>
+      <div class="controls">
+        <button id="deal" type="button">New deal</button>
+        <button id="match" class="primary" type="button" disabled>Run AI match</button>
+        <small id="connection" aria-live="polite">Checking model connection…</small>
+      </div>
+    </div>
+    <div id="notice" role="status"></div>
+    <div class="layout">
+      <section class="panel scene-panel" aria-labelledby="room-name">
+        <div class="panel-heading"><span id="room-name" class="label"></span><span id="meter"></span></div>
+        <div id="scene" aria-hidden="true"><div class="prop first"></div><div class="prop second"></div><div class="piece"></div></div>
+        <div class="brief">
+          <h2 id="challenge"></h2><p id="brief"></p><p><strong>Goal</strong> <span id="goal"></span></p>
+          <div id="inventory" class="inventory" aria-label="Available objects"></div>
+        </div>
+      </section>
+      <section class="panel console" aria-labelledby="moves-heading">
+        <div class="panel-heading"><h2 id="moves-heading">Move bench</h2><button type="button" id="reset">Restart deal</button></div>
+        <p id="result" tabindex="-1" role="status"></p>
+        <div id="moves"></div>
+        <div class="replay-controls">
+          <button type="button" id="demo">Show shortest solution</button>
+          <button type="button" id="replay" hidden>Replay next move</button>
+        </div>
+        <h3>Round log</h3>
+        <ol id="log"></ol>
+        <p id="empty-log">Your moves will appear here.</p>
+      </section>
+    </div>
+    <p class="footnote">Room Lab checks inventory, action order, and goal state using simplified household rules.</p>
+  </main>
+</body>
+</html>

@@ -12,6 +12,16 @@ npm start
 
 Open http://127.0.0.1:8060, or double-click `Launch theUSAGE.cmd`. The server binds to loopback and honors `PORT`; `--port` is also supported. `npm run dev` watches server files.
 
+## Room Lab
+
+Open **Room Lab** from Usage Maps or visit http://127.0.0.1:8060/room. Play through three household rooms with six dealt objects. Each move checks required inventory and prior results. Blocked moves still spend a turn. The room changes as you add a shim, transfer water, or build a crossing.
+
+Each deal starts with exactly enough moves for its shortest legal solution. **Show shortest solution** lets you replay that route offline. These are discrete puzzle rules with a bounded list of moves and transformations.
+
+**Run AI match** uses two separate model calls. The setter chooses a room, inventory, and move budget from generated, solvability-checked deals. The solver sees only the selected deal and its action rules, and submits a move list. The referee replays that list. The solver wins by reaching the goal within budget. The setter wins if the solver runs out of moves or submits an incomplete solution.
+
+Both roles default to `OPENAI_MODEL`. Set `OPENAI_SETTER_MODEL` and `OPENAI_ROOM_SOLVER_MODEL` in `.env` to match different models. The live match sends the catalog and puzzle data to the configured provider on request. Manual play and the shortest-path replay work offline.
+
 ## Play
 
 - **Workshop:** build a map manually, inspect examples, and use optional live AI.

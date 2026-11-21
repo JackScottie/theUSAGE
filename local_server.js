@@ -4,11 +4,15 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { objects } from "./public/catalog.js";
 import { solve } from "./lib/solver.js";
+import { runMatch } from "./lib/room-match.js";
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "public");
 export function createServer({
   apiKey = process.env.OPENAI_API_KEY,
   model = process.env.OPENAI_MODEL,
   solveImpl = solve,
+  setterModel = process.env.OPENAI_SETTER_MODEL || model,
+  solverModel = process.env.OPENAI_ROOM_SOLVER_MODEL || model,
+  matchImpl = runMatch,
 } = {}) {
   let busy = false;
   const json = (res, status, data) => {
@@ -33,8 +37,23 @@ export function createServer({
         return json(res, 200, {
           ai: !!(apiKey && model),
           model: model || null,
+          roomAI: !!(apiKey && setterModel && solverModel),
           version: "1.0.0",
         });
+      if (req.method === "POST" && url.pathname === "/api/room-match") {
+        if (req.headers.origin !== `http://${req.headers.host}`)
+          return json(res, 403, { error: "Start the match from Room Lab." });
+        if (!apiKey || !setterModel || !solverModel)
+          return json(res, 503, { error: "Configure live AI in .env to run a model match." });
+        if (busy)
+          return json(res, 429, { error: "Another AI request is running." });
+        busy = true;
+        try {
+          return json(res, 200, await matchImpl({ apiKey, setterModel, solverModel }));
+        } finally {
+          busy = false;
+        }
+      }
       if (req.method === "POST" && url.pathname === "/api/solve") {
         if (
           req.headers.origin &&
@@ -124,6 +143,10 @@ export function createServer({
       const files = {
         "/": "index.html",
         "/index.html": "index.html",
+        "/room": "room.html",
+        "/room.js": "room.js",
+        "/room-engine.js": "room-engine.js",
+        "/room.css": "room.css",
         "/app.js": "app.js",
         "/styles.css": "styles.css",
         "/catalog.js": "catalog.js",

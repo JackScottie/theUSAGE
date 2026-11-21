@@ -1,11 +1,12 @@
 # Status
 
-Last updated: 2026-10-24
+Last updated: 2026-11-19
 
 ## Now
 Usage Maps is implemented on branch `usage-maps` as a local constrained-invention workbench.
 
 Implemented:
+- Room Lab adds three discrete household simulations with solvable inventory deals, move budgets, manual play, and step-by-step replay. Optional two-model matches use a setter, a solver, and a deterministic referee.
 - Responsive workshop, challenge collection, notebook, and field guide.
 - Six authored challenges and fourteen bounded catalog objects with properties and quantities.
 - Workshop, human-first, and head-to-head play; human submission and shared-deal locking.
@@ -17,8 +18,9 @@ Implemented:
 - Legacy Node replica preserved separately; original Python source unchanged.
 
 ## Verification
-- All 20 automated engine/server/adapter tests pass with `npm test`; provider calls are mocked.
+- All 24 automated engine/server/adapter tests pass with `npm test`; provider calls are mocked.
 - Browser checks cover rendering at narrow panel width, object removal/restoration, reload persistence, manual step creation, human submission locking, separate opponent maps, and comparison.
+- Room Lab browser checks cover the paper-shim round, shortest-solution replay, and restart.
 - No real OpenAI request or physical experiment has been run. Live solver requires the user's API key and chosen model in `.env`.
 
 ## Run

@@ -156,7 +156,7 @@ const sourceLabel = (p) =>
       ? "Authored example"
       : "Human proposal";
 function header() {
-  return `<header class="app-header"><a href="#workbench" class="brand" data-action="nav" data-tab="workbench"><span class="brand-mark">${icon("map", 24)}</span><span><strong>Usage Maps</strong><small>by theUSAGE</small></span></a><nav class="nav" aria-label="Main navigation">${[
+  return `<header class="app-header"><a href="#workbench" class="brand" data-action="nav" data-tab="workbench"><span class="brand-mark">${icon("map", 24)}</span><span><strong>Usage Maps</strong><small>by theUSAGE</small></span></a><nav class="nav" aria-label="Main navigation"><a href="/room">Room Lab</a>${[
     ["workbench", "Workbench"],
     ["challenges", "Challenges"],
     ["notebook", "Notebook"],
